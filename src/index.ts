@@ -1,8 +1,8 @@
-import express from "express";
 import "express-async-errors";
-import router from "./routes";
-import errorCatcher from "./middlewares/errorCatcher";
+import express from "express";
 import cors from "cors";
+import router from "./routes";
+import erroCatcher from "./middlewares/errorCatcher";
 
 const app = express();
 app.use(
@@ -10,13 +10,14 @@ app.use(
     origin: true,
   })
 );
+
 app.use(express.json());
+
 app.use(router);
+app.use(erroCatcher);
 
-app.get("/", (req, res) => res.json({ ok: "ok" }));
+// app.listen(3333, () => {
+//   console.log("Server Started");
+// });
 
-app.use(errorCatcher);
-
-app.listen(3333, () => {
-  console.log("Server Started");
-});
+export default app;

@@ -1,5 +1,5 @@
 import { Request, Response, NextFunction } from "express";
-import CustomError from "../error/CustomError";
+import AppError from "../error/AppError";
 
 export default function errorCatcher(
   error: Error,
@@ -7,12 +7,11 @@ export default function errorCatcher(
   response: Response,
   next: NextFunction
 ) {
-  if (error instanceof CustomError) {
-    return response.status(error.status).send({ message: error.message });
-  } else {
-    console.log(error);
-    return response
-      .status(400)
-      .send({ message: "Ops! Aconteceu algo inesperado." });
+  if (error instanceof AppError) {
+    return response.status(error.status).json({ message: error.message });
   }
+
+  console.log(error);
+
+  response.status(500).json({ message: "Internal Server Error" });
 }
