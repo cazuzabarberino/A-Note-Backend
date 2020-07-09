@@ -4,7 +4,10 @@
   "main": "index.js",
   "license": "MIT",
   "scripts": {
-    "start": "ts-node-dev --transpileOnly --no-notify --ignore-watch node_modules src/index.ts"
+    "start": "ts-node-dev --transpileOnly --no-notify --ignore-watch node_modules src/index.ts",
+    "migrate:latest": "knex migrate:latest --knexfile src/database/knexfile.ts",
+    "migrate:rollback": "knex migrate:rollback --knexfile src/database/knexfile.ts",
+    "migrate:make": "knex migrate:make -x ts --knexfile src/database/knexfile.ts"
   },
   "devDependencies": {
     "@types/cors": "^2.8.6",

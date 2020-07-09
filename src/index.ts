@@ -16,8 +16,8 @@ app.use(express.json());
 app.use(router);
 app.use(erroCatcher);
 
-// app.listen(3333, () => {
-//   console.log("Server Started");
-// });
+app.listen(3333, () => {
+  console.log("Server Started");
+});
 
 export default app;

@@ -5,7 +5,7 @@ plugins:
 
 # Nome do projeto
 # Será usado para construir o nome da Lambda e do API Gateway
-service: testing-deploy
+service: anote
 
 # Existem vários serviços que utilizam o Serverless Framework
 # Precisamos indicar que vamos usar a AWS
@@ -14,7 +14,7 @@ service: testing-deploy
 provider:
   name: aws
   runtime: nodejs10.x # Versão da função de Lambda
-  stage: dev # Controlar o stage de ambiente (usado no API Gateway)
+  stage: v1 # Controlar o stage de ambiente (usado no API Gateway)
   region: us-east-1 # Região para criar as lambdas. O padrão é us-east-1
 
 custom:

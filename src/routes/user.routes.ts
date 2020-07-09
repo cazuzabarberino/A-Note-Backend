@@ -1,5 +1,5 @@
 import { Router, request, response } from "express";
-import { connection } from "../database/connection";
+import connection from "../database/connection";
 const userRouter = Router();
 import { uuid } from "uuidv4";
 import AppError from "../error/AppError";
